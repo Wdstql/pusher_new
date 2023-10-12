@@ -1,0 +1,24 @@
+pusher-ppo:
+    env: Pusher-v4
+    run: PPO
+    stop:
+        timesteps_total: 5000000
+    config:
+        # Works for both torch and tf.
+        train_batch_size: 2048
+        lambda: 0.95
+        gamma: 0.99
+        framework: torch
+        lr: .0003
+        sgd_minibatch_size: 64
+        grad_clip: 0.5
+        num_envs_per_worker: 2
+        num_gpus: 1
+        num_workers: 35
+        vf_loss_coeff: 0.5
+
+        # kl_coeff: 1.0
+        # num_sgd_iter: 32
+        # clip_param: 0.2
+        # batch_mode: truncate_episodes
+        # observation_filter: MeanStdFilter
